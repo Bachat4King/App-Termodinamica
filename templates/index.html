@@ -1,59 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>App-Termodinamica</title>
 
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div id="particles-js">
+      <div id="contenedor">
+        <div class="title">
+          <h1>Ciclo De Rankine</h1>
+        </div>
 
-<div class="title">
-    <h1>Ciclo De Rankine</h1>
-</div>
+        <ul>
+          <li>
+            <label for="Presion"></label
+            ><input type="text" id="Presion" placeholder="Presion1" />
+            <label>bar</label>
+          </li>
+          <br />
+          <li>
+            <label for="Presion2"></label
+            ><input type="text" id="Presion2" placeholder="Presion2" />
+            <label>bar</label> <br />
+          </li>
+          <br />
+          <li>
+            <label for="Temperatura"></label
+            ><input type="text" id="Temperatura" placeholder="Temperatura3" />
+            <label>ºC</label>
+          </li>
+        </ul>
 
-<ul>
-    <li><label for="Presion"></label><input type="text" id="Presion" placeholder="Presion1"> <label>bar</label> </li> <br>
-    <li><label for="Presion2"></label><input type="text" id="Presion2" placeholder="Presion2"> <label>bar</label> <br> </li> <br>
-    <li><label for="Temperatura"></label><input type="text" id="Temperatura" placeholder="Temperatura3"> <label>ºC</label></li>
-</ul>
+        <br />
 
-<br>
+        <button id="calcular">Calcular</button>
 
-<button id="calcular">Calcular</button>
-<label for="Resultado"></label><input type="text" id="Resultado" placeholder="Resultado"> <label>Eficiencia Termica</label>
+        <label for="Resultado"></label>
+        <input type="text" id="Resultado" placeholder="Resultado" />
+        <label>Eficiencia Termica</label>
+        <div>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.min.js"></script>
 
+          <img src="{{ user_image }}" alt="User Image" id="imagen" />
+        </div>
+      </div>
+    </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.min.js"></script>
+    <script>
+      let button = document.getElementById("calcular");
 
-<img src="{{ user_image }}" alt="User Image" id = "imagen" >
-
-
-<script>
-
-    let button = document.getElementById('calcular');
-
-    button.addEventListener('click', function () {
-        var presion1 = document.getElementById('Presion').value;
-        var presion2 = document.getElementById('Presion2').value;
-        var temperatura = document.getElementById('Temperatura').value;
-        var resultado = document.getElementById('Resultado');
+      button.addEventListener("click", function () {
+        var presion1 = document.getElementById("Presion").value;
+        var presion2 = document.getElementById("Presion2").value;
+        var temperatura = document.getElementById("Temperatura").value;
+        var resultado = document.getElementById("Resultado");
         var socket = io();
-        socket.emit('message', {
-            presion: presion1,
-            presion2: presion2,
-            temperatura: temperatura
+        socket.emit("message", {
+          presion: presion1,
+          presion2: presion2,
+          temperatura: temperatura,
         });
-        socket.on('message', function (data) {
-            resultado.value = data + '%';
+        socket.on("message", function (data) {
+          resultado.value = data + "%";
         });
 
         setInterval(function () {
-        var img = document.getElementById('imagen');
-        img.src = img.src.split('?')[0] + '?' + new Date().getTime();
-    }, 500);
+          var img = document.getElementById("imagen");
+          img.src = img.src.split("?")[0] + "?" + new Date().getTime();
+        }, 500);
+      });
+    </script>
 
-    });
-</script>
-
-</body>
+    <script src="../static/js/particles.js"></script>
+    <script>
+      particlesJS.load(
+        "particles-js",
+        "{{ url_for('static', filename='js/particlesjs-config.json') }}",
+        function () {
+          console.log("particles.json has loaded");
+        }
+      );
+    </script>
+  </body>
 </html>
