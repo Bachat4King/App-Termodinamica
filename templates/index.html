@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>App-Termodinamica</title>
 
     <link
@@ -12,41 +13,45 @@
   <body>
     <div id="particles-js">
       <div id="contenedor">
-        <div class="title">
-          <h1>Ciclo De Rankine</h1>
+        <div id="initial" class="gradient-border">
+          <div class="title">
+            <h1>Ciclo De Rankine</h1>
+          </div>
+
+          <ul>
+            <li>
+              <label for="Presion"></label
+              ><input type="text" id="Presion" placeholder="Presion1" />
+              <label>bar</label>
+            </li>
+            <br />
+            <li>
+              <label for="Presion2"></label
+              ><input type="text" id="Presion2" placeholder="Presion2" />
+              <label>bar</label> <br />
+            </li>
+            <br />
+            <li>
+              <label for="Temperatura"></label
+              ><input type="text" id="Temperatura" placeholder="Temperatura3" />
+              <label>ºC</label>
+            </li>
+          </ul>
+
+          <br />
+
+          <button id="calcular">Calcular</button>
+
+          <label for="Resultado"></label>
+          <input type="text" id="Resultado" placeholder="Resultado" />
+          <label>Eficiencia Termica</label>
         </div>
+        <div id="table">
+          <div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.min.js"></script>
 
-        <ul>
-          <li>
-            <label for="Presion"></label
-            ><input type="text" id="Presion" placeholder="Presion1" />
-            <label>bar</label>
-          </li>
-          <br />
-          <li>
-            <label for="Presion2"></label
-            ><input type="text" id="Presion2" placeholder="Presion2" />
-            <label>bar</label> <br />
-          </li>
-          <br />
-          <li>
-            <label for="Temperatura"></label
-            ><input type="text" id="Temperatura" placeholder="Temperatura3" />
-            <label>ºC</label>
-          </li>
-        </ul>
-
-        <br />
-
-        <button id="calcular">Calcular</button>
-
-        <label for="Resultado"></label>
-        <input type="text" id="Resultado" placeholder="Resultado" />
-        <label>Eficiencia Termica</label>
-        <div>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.min.js"></script>
-
-          <img src="{{ user_image }}" alt="User Image" id="imagen" />
+            <img src="{{ user_image }}" alt="User Image" id="imagen" />
+          </div>
         </div>
       </div>
     </div>

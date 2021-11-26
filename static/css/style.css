@@ -1,43 +1,99 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: -apple-system;
-    
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system;
 }
 
-body{
-    position: relative;
-    z-index: 98;
-    background-color: black;
-    width: 100%;
-    height: 100vh;
-    text-align: center;
+body {
+  position: relative;
+  z-index: 98;
+  background-color: black;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
 }
-#particles-js{
-    height: 100vh;
-    width: 100%;
-    position: fixed;
-    z-index: -1;
+#particles-js {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: -1;
 }
-#contenedor{
-    width: 500px;
-    height: 300px;
-    
-    background-color: green;
-    position: absolute;
-    z-index: 99;
+#contenedor {
+  width: 500px;
+  height: 300px;
+
+  background-color: green;
+  position: absolute;
+  z-index: 99;
+  top: 5%;
+  left: 5%;
+}
+#contenedor #initial {
+  opacity: 0.8;
+}
+#initial {
+  padding-top: 10%;
+  width: 500px;
+  height: 300px;
+  color: blue;
+  border-radius: 20% solid black;
+}
+#contenedor li {
+  list-style-type: none;
+  color: red;
+  font-size: 20px;
+}
+.gradient-border {
+  --border-width: 3px;
+  color: white;
+  background: #222;
+  border-radius: var(--border-width);
 }
 
-img{
-    
-    width: 1500px;
-    height: 1000px;
+.gradient-border::after {
+  position: absolute;
+  content: "";
+  top: calc(-1 * var(--border-width));
+  left: calc(-1 * var(--border-width));
+  z-index: -1;
+  width: calc(100% + var(--border-width) * 2);
+  height: calc(100% + var(--border-width) * 2);
+  background: linear-gradient(
+    20deg,
+    hsl(224, 85%, 66%),
+    hsl(137, 96%, 37%),
+    hsl(241, 95%, 40%),
+    hsl(359, 100%, 22%),
+    hsl(44, 85%, 66%),
+    hsl(89, 85%, 66%),
+    hsl(134, 85%, 66%),
+    hsl(179, 85%, 66%)
+  );
+  background-size: 300% 300%;
+  background-position: 0 50%;
+  border-radius: calc(2 * var(--border-width));
+  animation: moveGradient 4s alternate infinite;
 }
-#imagen{
-    margin-left: 150%;
-    margin-top: -30%;
-    position: relative;
-    z-index: 99;
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}
 
+#table {
+  left: 150%;
+  bottom: 70%;
+  position: relative;
+  z-index: 99;
+  width: 1500px;
+  height: 1000px;
+}
+@media (max-width: 1920px) {
+  #table {
+    left: 120%;
+    margin-top: -20%;
+    width: 1250px;
+    height: 800px;
+  }
 }
