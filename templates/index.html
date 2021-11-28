@@ -18,7 +18,7 @@
             <h1>Ciclo De Rankine</h1>
           </div>
 
-          <ul>
+          <ul id="first">
             <li>
               <label for="Presion"></label
               ><input type="text" id="Presion" placeholder="Presion1" />
@@ -41,12 +41,45 @@
           <br />
 
           <button id="calcular">Calcular</button>
-
-          <label for="Resultado"></label>
-          <input type="text" id="Resultado" placeholder="Resultado" />
-          <label>Eficiencia Termica</label>
+          
+          <div id="calculos"  class="gradient-border">
+          <ul>
+            <li>
+              <label>trabajo requerido por la bomba </label>
+              <input type="text" id="bomba" />
+            </li>
+            <li>
+              <label>trabajo generado por la turbina hp </label>
+              <input type="text" id="turbinaHP" />
+            </li>
+            <li>
+              <label>trabajo generado por la turbina lp </label>
+              <input type="text" id="turbinaLP" />
+            </li>
+            <li>
+              <label>trabajo total de la turbina </label>
+              <input type="text" id="trabajoTotal" />
+            </li>
+            <li>
+              <label>heat input by boiler </label>
+              <input type="text" id="boiler" />
+            </li>
+            <li>
+              <label>calor rechazado por el condensador </label>
+              <input type="text" id="condenser" />
+            </li>
+            <li>
+              <label>eficiencia termica </label>
+              <input type="text" id="eficiencia" />
+            </li>
+            <li>
+              <label>flujo masico </label>
+              <input type="text" id="flujo masico" />
+            </li>
+          </ul>
         </div>
-        <div id="table">
+        </div>
+        <div id="table" >
           <div>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.min.js"></script>
 
@@ -63,7 +96,15 @@
         var presion1 = document.getElementById("Presion").value;
         var presion2 = document.getElementById("Presion2").value;
         var temperatura = document.getElementById("Temperatura").value;
-        var resultado = document.getElementById("Resultado");
+        var eficiencia = document.getElementById("eficiencia");
+        var bomba = document.getElementById("bomba");
+        var turbinaHP = document.getElementById("turbinaHP");
+        var turbinaLP = document.getElementById("turbinaLP");
+        var trabajoTotal = document.getElementById("trabajoTotal");
+        var boiler = document.getElementById("boiler");
+        var condenser = document.getElementById("condenser");
+        var flujoMasico = document.getElementById("flujo masico");
+
         var socket = io();
         socket.emit("message", {
           presion: presion1,
@@ -71,7 +112,14 @@
           temperatura: temperatura,
         });
         socket.on("message", function (data) {
-          resultado.value = data + "%";
+          eficiencia.value = data["eficiencia"] + "%";
+          bomba.value = data["wp"] + " kJ/kg";
+          turbinaHP.value = data["w_HPt"] + " kJ/kg";
+          turbinaLP.value = data["w_LPt"] + " kJ/kg";
+          trabajoTotal.value = data["WTT"] + " kJ/kg";
+          boiler.value = data["q_H"] + " kJ/kg";
+          condenser.value = data["q_L"] + " kJ/kg";
+          flujoMasico.value = data["flujo_masico"] + " kg/s";
         });
 
         setInterval(function () {

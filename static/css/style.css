@@ -23,15 +23,13 @@ body {
   width: 500px;
   height: 300px;
 
-  background-color: green;
+  
   position: absolute;
   z-index: 99;
   top: 5%;
   left: 5%;
 }
-#contenedor #initial {
-  opacity: 0.8;
-}
+
 #initial {
   padding-top: 10%;
   width: 500px;
@@ -39,15 +37,32 @@ body {
   color: blue;
   border-radius: 20% solid black;
 }
+#first{
+  text-align: -moz-left;
+  padding-left: 35%;
+
+}
+button{
+  border-radius: 20px;
+  width: 160px;
+  height: 30px;
+  font-size: 25px;
+}
+button:hover{
+  background-color: gray;
+  
+}
+
 #contenedor li {
   list-style-type: none;
   color: red;
-  font-size: 20px;
+  font-size: 25px;
 }
+
 .gradient-border {
   --border-width: 3px;
   color: white;
-  background: #222;
+  
   border-radius: var(--border-width);
 }
 
@@ -60,15 +75,12 @@ body {
   width: calc(100% + var(--border-width) * 2);
   height: calc(100% + var(--border-width) * 2);
   background: linear-gradient(
-    20deg,
-    hsl(224, 85%, 66%),
+    10deg,
     hsl(137, 96%, 37%),
-    hsl(241, 95%, 40%),
-    hsl(359, 100%, 22%),
-    hsl(44, 85%, 66%),
-    hsl(89, 85%, 66%),
-    hsl(134, 85%, 66%),
-    hsl(179, 85%, 66%)
+    hsl(238, 100%, 51%)
+    
+    
+  
   );
   background-size: 300% 300%;
   background-position: 0 50%;
@@ -77,12 +89,12 @@ body {
 }
 @keyframes moveGradient {
   50% {
-    background-position: 100% 50%;
+    background-position: 40% 100%;
   }
 }
 
 #table {
-  left: 150%;
+  left: 100%;
   bottom: 70%;
   position: relative;
   z-index: 99;
@@ -97,3 +109,25 @@ body {
     height: 800px;
   }
 }
+#imagen{
+  width: 1000px;
+  height: 800px;
+  
+}
+
+#calculos{
+ 
+  position: relative;
+  z-index: 99;
+  width: 500px;
+  height: 800px;
+  top: 35%;
+  opacity: 1;
+  text-align: right;
+
+}
+#calculos li {
+  color: white;
+  padding-top: 10%;
+}
+

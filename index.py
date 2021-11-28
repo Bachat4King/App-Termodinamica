@@ -206,7 +206,9 @@ def handle_message(message):
 
     plt.savefig('static/miau.jpg')
 
-    send(round(float(eta_th), 2), broadcast=True)
+    dic = {"eficiencia": round(eta_th, 2), "wp": round(w_p, 2), "w_HPt": round(w_HPt,2), "w_LPt": round(w_LPt, 2), "q_H": round(q_H, 2), "q_L": round(q_L, 2), "flujo_masico": round(flujo_masico, 2), "WTT": round(float(w_HPt + w_LPt - w_p), 2)}
+
+    send(dic, broadcast=True)
 
 
 @app.route('/')
