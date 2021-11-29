@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: -apple-system;
+  
 }
 
 body {
@@ -33,7 +34,7 @@ body {
   padding-top: 10%;
   width: 500px;
   height: 300px;
-  color: blue;
+  color: black;
   border-radius: 20% solid black;
 }
 #first {
@@ -53,7 +54,7 @@ button:hover {
 
 #contenedor li {
   list-style-type: none;
-  color: red;
+  color: black;
   font-size: 25px;
 }
 
