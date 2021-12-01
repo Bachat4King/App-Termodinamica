@@ -1,24 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <title>App-Termodinamica</title>
 
-<p>
-    <br>
-        Nicolas Correa
-    <br>
-        Bastian Silva
-    <br>
-        Nicolas Vasquez
-    <br>
-        Isaac Romero
-    <br>
-        Israel Verdugo
+        <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+        />
+    </head>
+    <body>
+        <div id="particles-js">
+            <div class="row" id="particles-js">
+                <div class="column">
+                </div>
+                <div class="column">
+                    <ul class="topnombres">
+                        <li>
+                            <font size=6><h1 style="color: rgb(103, 243, 166);">Nicolas Correa</h1></font>
+                        </li>
+                        <br>
+                        <br>
+                        <li>
+                            <font size=6><h1 style="color: rgb(103, 243, 166);">Bastian Silva</h1></font>
+                        </li>
+                        <br>
+                        <br>
+                        <li>
+                            <font size=6><h1 style="color: rgb(103, 243, 166);">Nicolas Vasquez</h1></font>
+                        </li>
+                        <br>
+                        <br>
+                        <li>
+                            <font size=6><h1 style="color: rgb(103, 243, 166);">Isaac Romero</h1></font>
+                        </li>
+                        <br>
+                        <br>
+                        <li>
+                            <font size=6><h1 style="color: rgb(103, 243, 166);">Israel Verdugo</h1></font>
+                        </li>
+                    </ul>
+                </div>
+                <div class="column">
+                </div>
+            </div>
+        </div>
 
-</p>
-
-</body>
+    <script src="../static/js/particles.js"></script>
+    <script>
+    particlesJS.load(
+        "particles-js",
+        "{{ url_for('static', filename='js/particlesjs-config.json') }}",
+        function () {
+        console.log("particles.json has loaded");
+        }
+    );
+    </script>
+    </body>
 </html>

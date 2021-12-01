@@ -1,101 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <title>App-Termodinamica</title>
 
     <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}"
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style.css') }}"
     />
-  </head>
-  <body>
-    <div id="particles-js">
-      <div id="contenedor">
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.min.js"></script>
+<body>
+<div id="particles-js">
+    <div id="contenedor">
         <div id="initial" class="gradient-border">
-          <div class="title">
-            <h1>Ciclo De Rankine</h1>
-          </div>
+            <div class="title">
+                <h1>Ciclo De Rankine</h1>
+            </div>
 
-          <ul id="first">
-            <li>
-              <label for="Presion"></label
-              ><input type="text" id="Presion" placeholder="Presion1" />
-              <label>bar</label>
-            </li>
-            <br />
-            <li>
-              <label for="Presion2"></label
-              ><input type="text" id="Presion2" placeholder="Presion2" />
-              <label>bar</label> <br />
-            </li>
-            <br />
-            <li>
-              <label for="Temperatura"></label
-              ><input type="text" id="Temperatura" placeholder="Temperatura3" />
-              <label>ºC</label>
-            </li>
-          </ul>
+            <ul id="first">
+                <li>
+                    <label for="Presion"></label
+                    ><input type="text" id="Presion" placeholder="Presión 1"/>
+                    <label>bar</label>
+                </li>
+                <br/>
+                <li>
+                    <label for="Presion2"></label
+                    ><input type="text" id="Presion2" placeholder="Presión 2"/>
+                    <label>bar</label> <br/>
+                </li>
+                <br/>
+                <li>
+                    <label for="Temperatura"></label
+                    ><input type="text" id="Temperatura" placeholder="Temperatura 3"/>
+                    <label>ºC</label>
+                </li>
+                <li>
+                    <label for="potencia"></label>
+                    <label style="text-align: left">Potencia que puede producir la planta</label>
+                    <input type="text" id="potencia"/>
+                    <label>MW</label>
+                </li>
+                <li>
+                    <label for="division"></label>
+                    <label>Cuantas veces disminuye la presión en p4 con respecto a p3</label>
+                    <input type="text" id="division"/>
+                </li>
+            </ul>
 
-          <br />
+            <br/>
 
-          <button id="calcular">Calcular</button>
-          
-          <div id="calculos"  class="gradient-border">
-          <ul>
-            <li>
-              <label>trabajo requerido por la bomba </label>
-              <input type="text" id="bomba" />
-            </li>
-            <li>
-              <label>trabajo generado por la turbina hp </label>
-              <input type="text" id="turbinaHP" />
-            </li>
-            <li>
-              <label>trabajo generado por la turbina lp </label>
-              <input type="text" id="turbinaLP" />
-            </li>
-            <li>
-              <label>trabajo total de la turbina </label>
-              <input type="text" id="trabajoTotal" />
-            </li>
-            <li>
-              <label>heat input by boiler </label>
-              <input type="text" id="boiler" />
-            </li>
-            <li>
-              <label>calor rechazado por el condensador </label>
-              <input type="text" id="condenser" />
-            </li>
-            <li>
-              <label>eficiencia termica </label>
-              <input type="text" id="eficiencia" />
-            </li>
-            <li>
-              <label>flujo masico </label>
-              <input type="text" id="flujo masico" />
-            </li>
-          </ul>
+            <button id="calcular">Calcular</button>
+
+            <div id="calculos" class="gradient-border">
+                <ul>
+                    <li>
+                        <label>Trabajo requerido por la bomba </label>
+                        <input type="text" id="bomba"/>
+                    </li>
+                    <li>
+                        <label>Trabajo generado por la turbina alta presión </label>
+                        <input type="text" id="turbinaHP"/>
+                    </li>
+                    <li>
+                        <label>Trabajo generado por la turbina baja presión </label>
+                        <input type="text" id="turbinaLP"/>
+                    </li>
+                    <li>
+                        <label>Trabajo total de la turbina </label>
+                        <input type="text" id="trabajoTotal"/>
+                    </li>
+                    <li>
+                        <label>Aporte de calor por la caldera </label>
+                        <input type="text" id="boiler"/>
+                    </li>
+                    <li>
+                        <label>Calor rechazado por el condensador </label>
+                        <input type="text" id="condenser"/>
+                    </li>
+                    <li>
+                        <label>Eficiencia térmica </label>
+                        <input type="text" id="eficiencia"/>
+                    </li>
+                    <li>
+                        <label>Flujo másico </label>
+                        <input type="text" id="flujo masico"/>
+                    </li>
+                </ul>
+            </div>
         </div>
+        <div id="table">
+            <div>
+                <img class="image" src="{{ user_image }}" alt="Image" id="imagen"/>
+            </div>
         </div>
-        <div id="table" >
-          <div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.min.js"></script>
-
-            <img src="{{ user_image }}" alt="User Image" id="imagen" />
-          </div>
-        </div>
-      </div>
     </div>
+    <button id="integrantes" onclick="location.href='http://127.0.0.1:8000/about.html'">Integrantes</button>
+</div>
 
-    <script>
-      let button = document.getElementById("calcular");
 
-      button.addEventListener("click", function () {
+<script>
+    let button = document.getElementById("calcular");
+
+    button.addEventListener("click", function () {
         var presion1 = document.getElementById("Presion").value;
         var presion2 = document.getElementById("Presion2").value;
         var temperatura = document.getElementById("Temperatura").value;
+        var potencia = document.getElementById("potencia").value;
+        var division = document.getElementById("division").value;
         var eficiencia = document.getElementById("eficiencia");
         var bomba = document.getElementById("bomba");
         var turbinaHP = document.getElementById("turbinaHP");
@@ -107,37 +121,41 @@
 
         var socket = io();
         socket.emit("message", {
-          presion: presion1,
-          presion2: presion2,
-          temperatura: temperatura,
+            presion: presion1,
+            presion2: presion2,
+            temperatura: temperatura,
+            potencia: potencia,
+            division: division,
         });
         socket.on("message", function (data) {
-          eficiencia.value = data["eficiencia"] + "%";
-          bomba.value = data["wp"] + " kJ/kg";
-          turbinaHP.value = data["w_HPt"] + " kJ/kg";
-          turbinaLP.value = data["w_LPt"] + " kJ/kg";
-          trabajoTotal.value = data["WTT"] + " kJ/kg";
-          boiler.value = data["q_H"] + " kJ/kg";
-          condenser.value = data["q_L"] + " kJ/kg";
-          flujoMasico.value = data["flujo_masico"] + " kg/s";
+            eficiencia.value = data["eficiencia"] + "%";
+            bomba.value = data["wp"] + " kJ/kg";
+            turbinaHP.value = data["w_HPt"] + " kJ/kg";
+            turbinaLP.value = data["w_LPt"] + " kJ/kg";
+            trabajoTotal.value = data["WTT"] + " kJ/kg";
+            boiler.value = data["q_H"] + " kJ/kg";
+            condenser.value = data["q_L"] + " kJ/kg";
+            flujoMasico.value = data["flujo_masico"] + " kg/s";
         });
 
         setInterval(function () {
-          var img = document.getElementById("imagen");
-          img.src = img.src.split("?")[0] + "?" + new Date().getTime();
-        }, 500);
-      });
-    </script>
+            var img = document.getElementById("imagen");
+            img.src = img.src.split("?")[0] + "?" + new Date().getTime();
+        }, 1000);
 
-    <script src="../static/js/particles.js"></script>
-    <script>
-      particlesJS.load(
+
+    });
+</script>
+
+<script src="../static/js/particles.js"></script>
+<script>
+    particlesJS.load(
         "particles-js",
         "{{ url_for('static', filename='js/particlesjs-config.json') }}",
         function () {
-          console.log("particles.json has loaded");
+            console.log("particles.json has loaded");
         }
-      );
-    </script>
-  </body>
+    );
+</script>
+</body>
 </html>

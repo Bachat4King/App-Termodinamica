@@ -3,7 +3,29 @@
   padding: 0;
   box-sizing: border-box;
   font-family: -apple-system;
-  
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+ 
+  height: 300px;
+}
+
+.topnombres{
+  position: relative;
+  top: 180px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 body {
@@ -22,7 +44,7 @@ body {
 }
 #contenedor {
   width: 500px;
-  height: 300px;
+  height: 350px;
 
   position: absolute;
   z-index: 99;
@@ -33,15 +55,26 @@ body {
 #initial {
   padding-top: 10%;
   width: 500px;
-  height: 300px;
+  height: 200px;
   color: black;
   border-radius: 20% solid black;
 }
 #first {
   text-align: -moz-left;
-  padding-left: 35%;
-}
+  padding-left: 30%;
 
+}
+#potencia{
+  display: inline;
+  
+}
+#li-division{
+  width: 500px;
+}
+#division{
+  display: flow-root;
+  
+}
 button {
   border-radius: 20px;
   width: 160px;
@@ -68,7 +101,7 @@ button:hover {
 .gradient-border::after {
   position: absolute;
   content: "";
-  top: calc(-1 * var(--border-width));
+  top: calc(1 * var(--border-width));
   left: calc(-1 * var(--border-width));
   z-index: -1;
   width: calc(100% + var(--border-width) * 2);
@@ -92,6 +125,7 @@ button:hover {
   z-index: 99;
   width: 1250px;
   height: 800px;
+  z-index: -1;
 }
 #imagen {
   width: 1250px;
@@ -112,37 +146,138 @@ button:hover {
   padding-top: 10%;
   display: block ruby;
 }
+label {
+  font-size: 15px;
+}
+#integrantes{
+  position: relative;
+  z-index: 99;
+  right: 36%;
+}
 
-@media screen and (max-width: 1920px) {
+
+
+
+@media screen and (min-width: 1000px) {
   #table {
-    left: 150%;
-    bottom: 100%;
-    width: 1000px;
-    height: 800px;
+    left: 250%;
+    margin-top: 0;
+    width: 500px;
+    height: 400px;
   }
   #imagen {
-    width: 1000px;
-    height: 800px;
+    width: 500px;
+    height: 400px;
+  }
+  #calculos {
+    top: 5%;
+  }
+}
+
+
+@media screen and (min-width: 1100px) {
+  #table {
+    left: 180%;
+    margin-top: 0;
+    width: 600px;
+    height: 500px;
+    bottom: 15%;
+  }
+  #imagen {
+    width: 600px;
+    height: 500px;
   }
   #contenedor {
+    width: 220px;
+    height: 350px;
+  }
+  #initial {
+    width: 220px;
+    height: 100px;
+    padding-top: 0;
+  }
+  #calculos {
+    top: 20%;
     width: 350px;
+    height: 350px;
+  }
+  #calculos li {
+    padding-top: 0%;
+  }
+  label {
+    font-size: 12px;
+  }
+  #first {
+    padding-left: 15%;
+  }
+  button {
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #table {
+    left: 185%;
+    margin-top: -10%;
+    width: 700px;
+    height: 500px;
+  }
+  #imagen {
+    width: 700px;
+    height: 500px;
+  }
+  #calculos {
+    top: 10%;
+    height: 500px;
+    width: 350px;
+  }
+  #calculos li {
+    padding-top: 4%;
+  }
+}
+
+
+@media screen and (min-width: 1400px) {
+  #table {
+    left: 170%;
+    margin-top: 0;
+    width: 800px;
+    height: 600px;
+  }
+  #imagen {
+    width: 800px;
+    height: 600px;
+  }
+  #contenedor {
+    width: 300px;
+    height: 350px;
   }
   #initial {
     width: 350px;
+    
   }
   #calculos {
-    width: 350px;
-    height: 500px;
+    top: 20%;
+    width: 400px;
+    height: 400px;
   }
   label {
     font-size: 15px;
   }
-  #calculos li {
-    padding-top: 7%;
+
+  #first {
+    padding-left: 25%;
+  }
+  .title{
+    padding-right: 10%;
+  }
+  #calcular{
+    margin-right: 10%;
   }
 }
 
-@media screen and (max-width: 1696px) {
+
+@media screen and (min-width: 1600px) {
   #table {
     left: 160%;
     margin-top: 10%;
@@ -158,108 +293,32 @@ button:hover {
   }
 }
 
-@media screen and (max-width: 1536px) {
+@media screen and (min-width: 1800px) {
   #table {
-    left: 200%;
-    margin-top: 0;
-    width: 800px;
-    height: 600px;
+    left: 150%;
+    bottom: 60%;
+    width: 1000px;
+    height: 800px;
   }
   #imagen {
-    width: 800px;
-    height: 600px;
+    width: 1000px;
+    height: 800px;
   }
   #contenedor {
-    width: 250px;
-    height: 250px;
+    width: 350px;
   }
   #initial {
-    width: 250px;
+    width: 350px;
+    height: 250px;
   }
   #calculos {
-    top: 20%;
-
-    height: 400px;
+    width: 400px;
+    height: 500px;
   }
   label {
     font-size: 15px;
   }
-
-  #first {
-    padding-left: 25%;
-  }
-}
-
-@media screen and (max-width: 1408px) {
-  #table {
-    left: 185%;
-    margin-top: -10%;
-    width: 700px;
-    height: 500px;
-  }
-  #imagen {
-    width: 700px;
-    height: 500px;
-  }
-  #calculos {
-    top: 10%;
-    height: 350px;
-  }
   #calculos li {
-    padding-top: 4%;
-  }
-}
-
-@media screen and (max-width: 1282px) {
-  #table {
-    left: 250%;
-    margin-top: 0;
-    width: 600px;
-    height: 500px;
-  }
-  #imagen {
-    width: 600px;
-    height: 500px;
-  }
-  #contenedor {
-    width: 200px;
-    height: 250px;
-  }
-  #initial {
-    width: 200px;
-    padding-top: 0;
-  }
-  #calculos {
-    top: 20%;
-
-    height: 250px;
-  }
-  #calculos li {
-    padding-top: 0%;
-  }
-  label {
-    font-size: 15px;
-  }
-  #first {
-    padding-left: 15%;
-  }
-  button {
-    font-size: 15px;
-  }
-}
-
-@media screen and (max-width: 1160px) {
-  #table {
-    left: 250%;
-    margin-top: 0;
-    width: 500px;
-    height: 400px;
-  }
-  #imagen {
-    width: 500px;
-    height: 400px;
-  }
-  #calculos {
-    top: 5%;
+    padding-top: 7%;
   }
 }
